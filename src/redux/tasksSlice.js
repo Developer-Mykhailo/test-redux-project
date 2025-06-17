@@ -15,30 +15,18 @@ const slice = createSlice({
 
   reducers: {
     addTask: (state, action) => {
-      return {
-        ...state,
-        tasks: [...state.tasks, action.payload],
-      };
+      state.tasks.push(action.payload);
     },
     deleteTask: (state, action) => {
-      return {
-        ...state,
-        tasks: state.tasks.filter((task) => task.id !== action.payload),
-      };
+      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
     },
     toggleCompleted: (state, action) => {
-      return {
-        ...state,
-        tasks: state.tasks.map((task) => {
-          if (task.id !== action.payload) {
-            return task;
-          }
-          return {
-            ...task,
-            completed: !task.completed,
-          };
-        }),
-      };
+      for (const task of state.tasks) {
+        if (task.id === action.payload) {
+          task.completed = !task.completed;
+          break;
+        }
+      }
     },
   },
 });
@@ -96,3 +84,5 @@ export default slice.reducer;
 //   }
 // }
 //---------------------------------------------------------------
+
+// http://github.com/luxplanjay/react-114/pull/new/12-redux-toolkit
