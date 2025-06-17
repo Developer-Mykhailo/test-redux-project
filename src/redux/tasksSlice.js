@@ -1,3 +1,11 @@
+import { createAction } from "@reduxjs/toolkit";
+
+export const addTask = createAction("tasks/addTask");
+
+export const deleteTask = createAction("tasks/deleteTask");
+
+export const toggleCompleted = createAction("tasks/toggleCompleted");
+
 const initialState = {
   tasks: [
     { id: 0, text: "Learn HTML and CSS", completed: true },
