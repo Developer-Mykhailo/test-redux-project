@@ -5,7 +5,7 @@ import { setStatusFilter } from "../../redux/actions";
 
 export const StatusFilter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector((state) => state.filters.status);
+  const filter = useSelector((state) => state.filter.status);
 
   const handleFilterChange = (filter) => dispatch(setStatusFilter(filter));
   //
